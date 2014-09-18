@@ -1,13 +1,3 @@
-/*
-var templateSource = document.getElementById('contact-template').innerHTML;
-var contactTemplate = Handlebars.compile( templateSource );
-
-function createContactFromTemplate( contact ) {
-    return contactTemplate( contact );
-
-}
-*/
-
 var contacts = [{  "id": 1,
     "firstName": "Ethan",
     "initials": "A",
@@ -35,10 +25,3 @@ function renderContactWithTemplate(contacts){
 }
 
 renderContactWithTemplate( contacts );
-/*
-var container = document.querySelector('.contact-template');
-
-var html = Handlebars.templates.contact(contact);
-
-container.innerHTML += html;
-*/
