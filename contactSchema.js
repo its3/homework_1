@@ -22,7 +22,7 @@ var contactSchema = {
     /**
      * initials - A string containing the contact's initials.
      */
-     initials: String,
+    initials: String,
 
     /**
      * lastName - A String containing the last name of the contact.
@@ -32,7 +32,7 @@ var contactSchema = {
     /**
      * created - The Date and time that the bookmark was created.
      */
-    created: Date,
+    created: String,
 
     /**
      * nickname - A String providing a favorite name for the contact.

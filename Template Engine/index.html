@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>contact list</title>
+    </head>
+    <body>
+        <ul class="contact-template">
+        </ul>
+        <script id="contact" src="handlebars.js" > </script>
+        <script id="contact-template" type="text/x-handlebars-template">
+            <article class="contact">
+                <h1>{{lastName}}, {{firstName}} {{initials}} ({{nickname}})</h1>
+                    <div>{{address.addressLine1}}</div>
+                    <div>{{address.addressLine2}}</div>
+                    <div>{{address.city}}, {{address.state}} {{address.zipCode}}</div>
+                    <div>{{email}}</div>
+                   <div>{{phoneNumber}}</div>
+            </article>
+        </script>
+        <script id="app" src="app.js" > </script>    
+    </body>
+</html>
