@@ -1,6 +1,6 @@
 var express = require('express');
 var hbs = require('hbs');
-// Load our bookmarks.json data file
+// Load our contacts.json data file
 var contacts = require('./public/data/exampleData.json');
 
 
@@ -28,31 +28,31 @@ app.get('/', function(req, res, next) {
 });
 
 
-// List all bookmarks
+// List all contacts
 app.get('/Contacts', function(req, res, next) {
     // Currently, just redirect to the homepage.
     res.redirect('/');
 });
 
 
-// Respond to requests for a specific bookmark
+// Respond to requests for a specific contact
 app.get('/Contacts/:id', function(req, res, next) {
     var bookmark = contacts.filter(function(contact) {
-        return contact.id == req.params.id;
+        return Contact.id == req.params.id;
     })[0];
 
-    if (contact) {
+    if (Contact) {
         res.render('contact', {
-            title: "contact: " + contact.lastName + ", " + contact.firstName,
+            title: "contact: " + Contact.lastName + ", " + contact.firstName,
             bookmark: bookmark
         });
     }
     else {
-        res.render('contact', {
+        res.render('Contact', {
             title: "Contact does not exist.",
             notification: {
                 severity: "error",
-                message: "No contact exists with that id! ☹"
+                message: "No contact exists with that id."
             }
         });
     }
@@ -79,7 +79,7 @@ app.use(function(err, req, res, next) {
         notification: {
             severity: "error",
             message: "I’m so sorry, but something is wrong and internal\
-                      errors are occuring. This sucks, but the developers have\
+                      errors are occuring. The developers have\
                       been alerted and will (hopefully) have the issue resolved\
                       shortly."
         }

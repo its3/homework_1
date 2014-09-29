@@ -4,8 +4,8 @@
   "description": "A simple Contact List",
   "main": "app.js",
   "dependencies": {
-    "express": "^0.0.0",
-    "express-generator": "^4.9.0"
+    "express": "^4.9.5",
+    "hbs": "^2.7.0"
   },
   "devDependencies": {},
   "scripts": {
