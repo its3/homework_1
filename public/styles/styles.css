@@ -13,6 +13,3 @@ a:hover {
 a.back:before {
     content: '← ';
 }
-.bookmark-container {
-    list-style: none;
-}

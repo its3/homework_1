@@ -1,12 +1,13 @@
+<a href="/contacts/add" class="add">New Contact</a>
+
 {{#notification}}
 <p class="message {{severity}}">{{message}}</p>
 {{/notification}}
 
+{{#contacts}}
+
 <article class="contact">
-    <h1>{{lastName}}, {{firstName}} {{initials}} ({{nickname}})</h1>
-    <div>{{address.addressLine1}}</div>
-    <div>{{address.addressLine2}}</div>
-    <div>{{address.city}}, {{address.state}} {{address.zipCode}}</div>
-    <div>{{email}}</div>
-    <div>{{phoneNumber}}</div>
+    <H1><a href=/contacts/{{id}} title="{{firstName}} {{lastName}}">{{lastName}}, {{firstName}} {{initials}} ({{nickname}})</a></H1>
 </article>
+
+{{/contacts}}

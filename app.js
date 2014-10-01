@@ -18,7 +18,6 @@ app.set('ip', process.env.IP || '127.0.0.1');
 // Serve files in /public as static files
 app.use(express.static('public'));
 
-
 // Register the the index route
 app.get('/', function(req, res, next) {
     res.render('index', {
@@ -27,24 +26,72 @@ app.get('/', function(req, res, next) {
     });
 });
 
-
 // List all contacts
 app.get('/Contacts', function(req, res, next) {
     // Currently, just redirect to the homepage.
     res.redirect('/');
 });
 
+app.get('/contacts/add', function(req, res, next) {
+    res.render('addContact', {
+        title: "New contact",
+    });
+});
 
 // Respond to requests for a specific contact
 app.get('/Contacts/:id', function(req, res, next) {
-    var bookmark = contacts.filter(function(contact) {
-        return Contact.id == req.params.id;
+    var contact = contacts.filter(function(contact) {
+        return contact.id == req.params.id;
     })[0];
 
-    if (Contact) {
+    if (contact) {
         res.render('contact', {
-            title: "contact: " + Contact.lastName + ", " + contact.firstName,
-            bookmark: bookmark
+            title: "contact: " + contact.lastName + ", " + contact.firstName,
+            contacts: contact
+        });
+    }
+    else {
+        res.render('Contact', {
+            title: "Contact does not exist.",
+            notification: {
+                severity: "error",
+                message: "No contact exists with that id."
+            }
+        });
+    }
+});
+
+app.get('/contacts/:id/edit', function(req, res, next) {
+    var contact = contacts.filter(function(contact) {
+        return contact.id == req.params.id;
+    })[0];
+
+    if (contact) {
+        res.render('contactEdit', {
+            title: "contact: " + contact.lastName + ", " + contact.firstName,
+            contacts: contact
+        });
+    }
+    else {
+        res.render('Contact', {
+            title: "Contact does not exist.",
+            notification: {
+                severity: "error",
+                message: "No contact exists with that id."
+            }
+        });
+    }
+});
+
+app.get('/contacts/:id/delete', function(req, res, next) {
+    var contact = contacts.filter(function(contact) {
+        return contact.id == req.params.id;
+    })[0];
+
+    if (contact) {
+        res.render('contactDelete', {
+            title: "contact: " + contact.lastName + ", " + contact.firstName,
+            contacts: contact
         });
     }
     else {
