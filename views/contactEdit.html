@@ -32,9 +32,9 @@
      zip : <input type="text" value="{{contacts.address.zipCode}}" name="zipCode">
      <br>
      country : <input type="text" value="{{contacts.address.country}}" name="country">
-</form>
 
 <B>
-<a href="/contacts/{{contacts.id}}">Confirm</a>
-<a href="/contacts/{{contacts.id}}" class="cancel">Cancel</a>
+<button type="submit" name="action" value="save" class="btn btn-green">Save</button>
+        <a class="btn" href="/">Cancel</a>
 </B>
+</form>

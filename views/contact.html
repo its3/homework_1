@@ -15,7 +15,15 @@
 </uL>
 
 {{/contacts}}
-
+<form>
 <a class="btn" href="/contacts/{{contacts.id}}/edit">Edit</a>
 
-<a class="btn" href="/contacts/{{contacts.id}}/delete">delete</a>
+{{#if contacts.id}}
+    <button type="submit"
+        class="btn btn-red right"
+        name="action"
+        value="delete"
+        formaction="/contacts/{{contacts.id}}/delete"
+        formmethod="POST">Delete</button>
+{{/if}}
+</form>

@@ -1,7 +1,8 @@
 var express = require('express');
 var hbs = require('hbs');
-// Load our contacts.json data file
-var contacts = require('./public/data/exampleData.json');
+var bodyParser = require('body-parser');
+//load contacts model
+var contacts = require('./Models/contact');
 
 
 // Create a new express app.
@@ -18,11 +19,18 @@ app.set('ip', process.env.IP || '127.0.0.1');
 // Serve files in /public as static files
 app.use(express.static('public'));
 
+// Parse the body of 'post' requests
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 // Register the the index route
 app.get('/', function(req, res, next) {
-    res.render('index', {
-        title: "Contact List",
-        contacts: contacts
+    contacts.find(function(err, contacts) {
+        res.render('index', {
+            title: "contacts",
+            contacts: contacts
+        });
     });
 });
 
@@ -38,72 +46,131 @@ app.get('/contacts/add', function(req, res, next) {
     });
 });
 
-// Respond to requests for a specific contact
-app.get('/Contacts/:id', function(req, res, next) {
-    var contact = contacts.filter(function(contact) {
-        return contact.id == req.params.id;
-    })[0];
+app.post('/contacts/add', saveContact);
 
-    if (contact) {
-        res.render('contact', {
-            title: "contact: " + contact.lastName + ", " + contact.firstName,
-            contacts: contact
-        });
+function saveContact(req, res, next) {
+
+    if (req.body.action === 'delete') {
+        return deleteContact(req, res, next);
     }
-    else {
-        res.render('Contact', {
-            title: "Contact does not exist.",
-            notification: {
-                severity: "error",
-                message: "No contact exists with that id."
+
+    contacts.findById(req.params.id, function(err, contact) {
+
+        if (!contact) {
+            contact = new contacts();
+            contact.created = Date();
+        }
+
+        contact.set({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            initials: req.body.initial,
+            nickname: req.body.nickname,
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            address: {
+                addressLine1: req.body.addressl1,
+                addressLine2: req.body.addressl2,
+                city: req.body.city,
+                state: req.body.state,
+                zipCode: req.body.zipCode,
+                country: req.body.country
             }
         });
-    }
+
+        contact.save(function(err) {
+            if (err) {
+                res.render('contactEdit', {
+                    title: "Error saving conact:" + contact.title,
+                    contacts: contact,
+                    notification: {
+                        severity: "error",
+                        message: err
+                    }
+                });
+            }
+            else {
+                res.redirect('/');
+            }
+        });
+    });
+}
+
+function deleteContact(req, res, next) {
+
+    contacts.findById(req.params.id, function(err, contact) {
+
+        if (contact) {
+            console.warn("Deleting contact:", contact);
+
+            contacts.remove(contact, function(err) {
+                if (err) {
+                    res.render('contactEdit', {
+                        title: "Delete contact failed!",
+                        notification: {
+                            severity: "error",
+                            message: "Could not delete contact: " + err
+                        }
+                    });
+                }
+                else {
+                    res.redirect('/');
+                }
+            });
+        }
+        else {
+            res.redirect('/');
+        }
+    });
+}
+
+// Respond to requests for a specific contact
+app.get('/Contacts/:id', function(req, res, next) {
+    contacts.findById(req.params.id, function(err, contact) {
+
+        if (contact) {
+            res.render('contact', {
+                title: "contact: " + contact.lastName + ", " + contact.firstName,
+                contacts: contact
+            });
+        }
+        else {
+            res.render('Contact', {
+                title: "Contact does not exist.",
+                notification: {
+                    severity: "error",
+                    message: "No contact exists with that id."
+                }
+            });
+        }
+    });
 });
 
 app.get('/contacts/:id/edit', function(req, res, next) {
-    var contact = contacts.filter(function(contact) {
-        return contact.id == req.params.id;
-    })[0];
+    contacts.findById(req.params.id, function(err, contact) {
 
-    if (contact) {
-        res.render('contactEdit', {
-            title: "contact: " + contact.lastName + ", " + contact.firstName,
-            contacts: contact
-        });
-    }
-    else {
-        res.render('Contact', {
-            title: "Contact does not exist.",
-            notification: {
-                severity: "error",
-                message: "No contact exists with that id."
-            }
-        });
-    }
+        if (contact) {
+            res.render('contactEdit', {
+                title: "contact: " + contact.lastName + ", " + contact.firstName,
+                contacts: contact
+            });
+        }
+        else {
+            res.render('Contact', {
+                title: "Contact does not exist.",
+                notification: {
+                    severity: "error",
+                    message: "No contact exists with that id."
+                }
+            });
+        }
+    });
 });
 
-app.get('/contacts/:id/delete', function(req, res, next) {
-    var contact = contacts.filter(function(contact) {
-        return contact.id == req.params.id;
-    })[0];
-
-    if (contact) {
-        res.render('contactDelete', {
-            title: "contact: " + contact.lastName + ", " + contact.firstName,
-            contacts: contact
-        });
-    }
-    else {
-        res.render('Contact', {
-            title: "Contact does not exist.",
-            notification: {
-                severity: "error",
-                message: "No contact exists with that id."
-            }
-        });
-    }
-});
+// Persist edits for a contact
+app.post('/contacts/:id/edit', saveContact);
+// Delete a contact
+app.post('/contacts/:id/delete', deleteContact);
 
 
 // 404 Not Found handler
