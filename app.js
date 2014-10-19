@@ -80,7 +80,7 @@ function saveContact(req, res, next) {
 
         contact.save(function(err) {
             if (err) {
-                res.render('contactEdit', {
+                res.render('addContact', {
                     title: "Error saving conact:" + contact.title,
                     contacts: contact,
                     notification: {
@@ -89,7 +89,9 @@ function saveContact(req, res, next) {
                     }
                 });
             }
-            else {
+            else if (req.params.id != null) {
+                res.redirect('/contacts/' + req.params.id);
+            } else {
                 res.redirect('/');
             }
         });

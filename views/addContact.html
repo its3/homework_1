@@ -1,3 +1,9 @@
+{{#notification}}
+<!-- Something happened: -->
+<p class="message {{severity}}">{{message}}</p>
+{{/notification}}
+
+
 <form action="" method="post">
     <H1>Add Contact</H1>
     <br>
@@ -11,7 +17,7 @@
     <br>
     Email : <input type="text" name="email">
     <br>
-    Phone Number : <input type="number" name="phoneNumber">
+    Phone Number : <input type="text" name="phoneNumber">
     <br>
     address :
     <br>
@@ -26,6 +32,8 @@
      zip : <input type="text" name="zipCode">
      <br>
      country : <input type="text" name="country">
+     
+<br>
 
 <B>
 <button type="submit" name="action" value="save" class="btn btn-green">Save</button>

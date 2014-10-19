@@ -2,12 +2,13 @@
 <p class="message {{severity}}">{{message}}</p>
 {{/notification}}
 
-<H3><a href="/contacts/add" class="add">New Contact</a></H3>
+<H3><a href="/contacts/add" class="btnAdd">New Contact</a></H3>
 
 {{#contacts}}
 
 <article class="contact">
-    <H1><a href=/contacts/{{id}} title="{{firstName}} {{lastName}}">{{lastName}}, {{firstName}} {{initials}} ({{nickname}})</a></H1>
+    <H1><a href=/contacts/{{id}} title="{{firstName}} {{lastName}}">{{lastName}}, {{firstName}} {{initials}} {{#if nickname}} ({{nickname}}) {{/if}}</a></H1>
 </article>
+
 
 {{/contacts}}

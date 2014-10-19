@@ -23,7 +23,3 @@ Contact_List/:id/edit
 
 not working as of organizational changes.
 
-<HEAD>
-
-<link rel="stylesheet" href="Style.css">
-</HEAD>

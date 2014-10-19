@@ -3,13 +3,60 @@ body {
     margin: auto;
     font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
+
 a {
     color: #333;
     text-decoration: none;
 }
+
 a:hover {
-    text-decoration: underline;
+    
 }
-a.back:before {
-    content: '← ';
+
+.btn {
+    cursor: pointer;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.btn-green {
+    background: rgb(28, 184, 65);
+}
+
+.nav {
+    color: white;
+    width: 720px;
+    height: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: blue;
+    border-radius: 8px;   
+}
+
+.home {
+    color:white;
+}
+
+.btnAdd {
+    cursor: pointer;
+    font: bold 25px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.contact {
+    border-bottom: 1px solid #333333;
 }

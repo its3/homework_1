@@ -8,7 +8,7 @@ var schema = new mongoose.Schema({
     /**
      * firstName - A String containing the first name of the contact.
      */
-    firstName: String,
+    firstName: {type: String, required: true},
     
     /**
      * initials - A string containing the contact's initials.
@@ -18,7 +18,7 @@ var schema = new mongoose.Schema({
     /**
      * lastName - A String containing the last name of the contact.
      */
-    lastName: String,
+    lastName: {type: String, required: true},
 
     /**
      * created - The Date and time that the bookmark was created.

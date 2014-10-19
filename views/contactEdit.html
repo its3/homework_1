@@ -5,7 +5,6 @@
 
 
 <form action="" method="post">
-    <H1>Add Contact</H1>
     <br>
     First Name : <input type="text" value="{{contacts.firstName}}" name="firstName">
     <br>
@@ -17,7 +16,7 @@
     <br>
     Email : <input type="text" value="{{contacts.email}}" name="email">
     <br>
-    Phone Number : <input type="number" value="{{contacts.phoneNumber}}" name="phoneNumber">
+    Phone Number : <input type="text" value="{{contacts.phoneNumber}}" name="phoneNumber">
     <br>
     address :
     <br>
@@ -33,8 +32,10 @@
      <br>
      country : <input type="text" value="{{contacts.address.country}}" name="country">
 
+<br>
+
 <B>
 <button type="submit" name="action" value="save" class="btn btn-green">Save</button>
-        <a class="btn" href="/">Cancel</a>
+        <a class="btn" href="/contacts/{{contacts.id}}">Cancel</a>
 </B>
 </form>
