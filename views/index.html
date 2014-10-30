@@ -2,13 +2,40 @@
 <p class="message {{severity}}">{{message}}</p>
 {{/notification}}
 
-<H3><a href="/contacts/add" class="btnAdd">New Contact</a></H3>
+<nav class="nav-bar">
 
+    <center><a href="/contacts/addGroup" class="btn">Add Group</a></center>
+<br>
+    <center><a href="/contacts/deleteGroup" class="btn">Delete Group</a></center>
+<ul>
+    {{#groups}}
+    <li>{{name}}</li>
+    {{/groups}}
+</ul>
+</nav>
+
+<br>
+<center>
+    <a href="/contacts/add" class="btnAdd">New Contact</a>
+</center>
 {{#contacts}}
-
 <article class="contact">
     <H1><a href=/contacts/{{id}} title="{{firstName}} {{lastName}}">{{lastName}}, {{firstName}} {{initials}} {{#if nickname}} ({{nickname}}) {{/if}}</a></H1>
 </article>
-
-
 {{/contacts}}
+<br>
+<center>
+    <table style= "margin-left: 240px;">
+        <tr>
+            {{#if currentPage}}
+            <td><a href="/?page={{nextPage}}" class="btn foot">Next Page</a></td>
+            {{/if}}
+            {{#numPages}}
+            <td><a href="/?page={{numPages}}" class="btn foot">{{numPages}}</a></td>
+            {{/numPages}}
+            {{#if previousPage}}
+            <td><a href="/?page={{previousPage}}" class="btn foot">Previous Page</a></td>
+            {{/if}}
+        </tr>
+    </table>
+</center>

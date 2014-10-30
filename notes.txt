@@ -1,0 +1,91 @@
+app.use('/search', function(req, res, next) {
+    students.distinct('majors', function(err, majors) {
+        if(err) { 
+            next(err);
+        } else {
+            res.locals.majors = majors;
+            next();
+        }
+    };
+};
+
+
+<input name="lastName" list="names">
+
+<datalist id="names">
+    <option value="Jones">
+    <option value="zimmerman">
+</datalist>
+
+Lazy Loading
+------------
+when viewport + scrolloffset = docheight : you are at bottom of page
+
+if(documentHeight - viewportH - scrolloffset < 100) {
+    fetchMoreContent();
+};
+
+.limit()
+.skip()
+
+
+
+1. Event
+2. make request
+3.Server Returns:
+    -JSON
+    -JSONP
+    -HTML
+    (data)
+4. render data with template
+5.append to page
+
+var next = document.querySelector(".next-button);
+document.addEventListener("click", function () {
+    
+});
+
+app.post('login', function(req,res,next) {
+    users.findOne({
+        username: req.body.user,
+        password: req.body.password
+    }, function (err, user) {
+        if(err) {
+            next(err);
+        } else {
+            res.render('login, {...})
+        } else {
+            res.render('/')
+        }
+    });
+});
+
+passport
+
+passport-local-strategy
+
+passport-local-mongoose
+
+
+
+USERSCHEMA
+
+var userSchema = mon...
+    username: ...,
+    name: ...,
+});
+
+userSchema.plugin();
+
+userSchema.methods.getBookmarks = function(callback) {
+    return bookmarks.find({user_id: this._id, callback});
+}
+
+req.user.getBookmarks(function(err, bookmarks) {
+
+});
+
+req.user.getBookmarks().sort('-created').exec(function (err, bookmarks) {
+    
+});
+

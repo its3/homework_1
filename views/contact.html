@@ -1,31 +1,39 @@
-{{#notification}}
-<!-- Something happened: -->
-<p class="message {{severity}}">{{message}}</p>
-{{/notification}}
-
 {{#contacts}}
-
-<uL>
+<center>
     <h1>{{lastName}}, {{firstName}} {{initials}} {{#if nickname}} ({{nickname}}) {{/if}}</h1>
+    {{#if group}}
+    <u>Group</u>
+    <div>{{group}}</div>
+    {{/if}}
+    <br>
     {{#if address.state}}
+    <u>Address</u>
     <div>{{address.addressLine1}}</div>
     <div>{{address.addressLine2}}</div>
     <div>{{#if address.city}} {{address.city}}, {{/if}} {{address.state}} {{address.zipCode}}</div>
     {{/if}}
+    <br>
+    {{#if email}}
+    <u>Email</u>
     <div>{{email}}</div>
+    {{/if}}
+    <br>
+    {{#if phoneNumber}}
+    <u>Phone Number</u>
     <div>{{phoneNumber}}</div>
-</uL>
-
+    {{/if}}
+</center>
 {{/contacts}}
+<br>
+<center>
 <form>
 <a class="btn" href="/contacts/{{contacts.id}}/edit">Edit</a>
 
-{{#if contacts.id}}
     <button type="submit"
-        class="btn btn-red"
+        class="btn"
         name="action"
         value="delete"
         formaction="/contacts/{{contacts.id}}/delete"
         formmethod="POST">Delete</button>
-{{/if}}
 </form>
+</center>

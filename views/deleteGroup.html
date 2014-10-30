@@ -1,0 +1,36 @@
+<center>
+{{#notification}}
+<!-- Something happened: -->
+<p class="message {{severity}}">{{message}}</p>
+{{/notification}}
+
+<br>
+
+<form>
+<table>
+    <tr>
+    <td>Group to delete :</td>
+    <td>
+        <select name="groupName">
+            {{#groups}}
+            <option value="{{name}}">{{name}}</option>
+            {{/groups}}
+        </select>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <button type="submit"
+        class="btn"
+        name="action"
+        value="delete"
+        formaction="/contacts/deleteGroup"
+        formmethod="POST">delete</button>
+    </td>
+    <td>
+    <a href="/" class="btn">cancel</a>
+    </td>
+    </tr>
+</table>
+</form>
+</center>

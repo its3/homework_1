@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 
-// Connect to our mongod server
-mongoose.connect('mongodb://'+ (process.env.IP || 'localhost') + '/contacts');
-
-// Define the schema for a bookmark
+// Define the schema for a contact
 var schema = new mongoose.Schema({
     /**
      * firstName - A String containing the first name of the contact.
@@ -43,6 +40,9 @@ var schema = new mongoose.Schema({
     /**
      * address - An Object to hold address information.
      */
+     
+     group: {type: String, required: true},
+     
     address: {
         /**
          * addressLine1 - A string containing the first contact address line.

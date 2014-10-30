@@ -1,3 +1,4 @@
+<center>
 {{#notification}}
 <!-- Something happened: -->
 <p class="message {{severity}}">{{message}}</p>
@@ -5,33 +6,58 @@
 
 
 <form action="" method="post">
-    <br>
-    First Name : <input type="text" value="{{contacts.firstName}}" name="firstName">
-    <br>
-    Last Name : <input type="text" value="{{contacts.lastName}}" name="lastName">
-    <br>
-    Initial : <input type="text" value="{{contacts.initials}}" name="initials">
-    <br>
-    Nickname : <input type="text" value="{{contacts.nickname}}" name="nickname">
-    <br>
-    Email : <input type="text" value="{{contacts.email}}" name="email">
-    <br>
-    Phone Number : <input type="text" value="{{contacts.phoneNumber}}" name="phoneNumber">
-    <br>
-    address :
-    <br>
-     address line 1 : <input type="text" value="{{contacts.address.addressLine1}}" name="addressl1">
-     <br>
-     address line 2 : <input type="text" value="{{contacts.address.addressLine2}}" name="addressl2">
-     <br>
-     city : <input type="text" value="{{contacts.address.city}}" name="city">
-     <br>
-     state : <input type="text" value="{{contacts.address.state}}" name="state">
-     <br>
-     zip : <input type="text" value="{{contacts.address.zipCode}}" name="zipCode">
-     <br>
-     country : <input type="text" value="{{contacts.address.country}}" name="country">
-
+<center><h1><u>Contact Info</u></h1></center>
+<table>
+    <tr>
+        <td>First Name :</td> <td><input type="text" value="{{contacts.firstName}}" name="firstName"></td>
+    </tr>
+    <tr>
+        <td>Last Name :</td> <td><input type="text" value="{{contacts.lastName}}" name="lastName"></td>
+    </tr>
+    <tr>
+        <td>Initial :</td> <td><input type="text" value="{{contacts.initials}}" name="initials"></td>
+    </tr>
+    <tr>
+        <td>Nickname :</td> <td><input type="text" value="{{contacts.nickname}}" name="nickname"></td>
+    </tr>
+    <tr>
+        <td>Email :</td> <td><input type="text" value="{{contacts.email}}" name="email"></td>
+    </tr>
+    <tr>
+        <td>Phone Number :</td> <td><input type="text" value="{{contacts.phoneNumber}}" name="phoneNumber"></td>
+    </tr>
+    <tr>
+        <td>Group :</td>
+        <td>
+            <select name="group">
+                {{#groups}}
+                <option value="{{name}}">{{name}}</option>
+                {{/groups}}
+            </select>    
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><center><u>Address</u></center></td>
+    </tr>
+    <tr>
+        <td>address line 1 :</td> <td><input type="text" value="{{contacts.address.addressLine1}}" name="addressl1"></td>
+    </tr>
+    <tr>
+        <td>address line 2 :</td> <td><input type="text" value="{{contacts.address.addressLine2}}" name="addressl2"></td>
+    </tr>
+    <tr>
+        <td>city :</td> <td><input type="text" value="{{contacts.address.city}}" name="city"></td>
+    </tr>
+    <tr>
+        <td>state :</td> <td><input type="text" value="{{contacts.address.state}}" name="state"></td>
+    </tr>
+    <tr>
+        <td>zip :</td> <td><input type="text" value="{{contacts.address.zipCode}}" name="zipCode"></td>
+    </tr>
+    <tr>
+        <td>country :</td> <td><input type="text" value="{{contacts.address.country}}" name="country"></td>
+    </tr>
+</table>
 <br>
 
 <B>
@@ -39,3 +65,4 @@
         <a class="btn" href="/contacts/{{contacts.id}}">Cancel</a>
 </B>
 </form>
+</center>

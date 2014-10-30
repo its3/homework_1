@@ -23,3 +23,9 @@ Contact_List/:id/edit
 
 not working as of organizational changes.
 
+implement for tuesday 11/4/14
+- Search
+- Groups
+- looks tbd
+- log in
+- multiuser
