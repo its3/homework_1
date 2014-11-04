@@ -20,9 +20,6 @@ Contact_List/:id
 Contact_List/:id/edit
  - information to edit the contact details
 
-
-not working as of organizational changes.
-
 implement for tuesday 11/4/14
 - Search
 - Groups

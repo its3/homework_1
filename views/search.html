@@ -1,5 +1,5 @@
+<form method="post" action="">
 <center>
-<form>
 <table>
     <tr>
     <td>First Name :</td> <td><input name="firstName"></td>
@@ -14,12 +14,18 @@
     <td>Email :</td> <td><input name="email"></td>
     </tr>
     <tr>
-    <td>City :</td> <td><input name="address.City"></td>
+    <td>City :</td> <td><input name="city"></td>
     </tr>
     <tr>
-    <td>State :</td> <td><input name="address.State"></td>
+    <td>State :</td> <td><input name="state"></td>
     </tr>
 </table>
     <button type="submit" name="action" value="search" class="btn btn-green">Search</button>
-</form>
 </center>
+
+{{#contacts}}
+<article class="contact">
+    <H1><a href=/contacts/{{id}} title="{{firstName}} {{lastName}}">{{lastName}}, {{firstName}} {{initials}} {{#if nickname}} ({{nickname}}) {{/if}}</a></H1>
+</article>
+{{/contacts}}
+</form>

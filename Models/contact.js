@@ -43,6 +43,13 @@ var schema = new mongoose.Schema({
      
      group: {type: String, required: true},
      
+     user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true,
+        index: true
+    },
+     
     address: {
         /**
          * addressLine1 - A string containing the first contact address line.
@@ -74,7 +81,7 @@ var schema = new mongoose.Schema({
          */
          country: String
     }});
-
+    
 // Export the model
 var contact = mongoose.model('contact', schema);
 module.exports = contact;

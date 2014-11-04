@@ -10,6 +10,13 @@
     <ul class="nav">
         <li><a href="/">Home</a></li>
         <li><a href="/contacts/search">Advanced Search</a></li>
+        {{#unless user}}
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Log In</a></li>
+        {{/unless}}
+        {{#if user}}
+        <li><a href="/logout">Log Out</a></li>
+        {{/if}}
     </ul>
 </center>
     {{{body}}}

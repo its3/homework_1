@@ -1,0 +1,27 @@
+<center>
+{{#notification}}
+<p class="message {{severity}}">{{message}}</p>
+{{/notification}}
+</center>
+
+<center>
+    <h1>
+        <u>
+        Register New User
+        </u>
+    </h1>
+</center>
+
+<center>
+<form action="/register" method="POST">
+<table>
+    <tr>
+        <td>Email: </td> <td><input type="email" name="username" required title="A valid email address is required." placeholder="john@example.com"></td>
+    </tr>
+    <tr>
+        <td>Password: </td> <td><input type="password" name="password" required title="You must provide a password."></td>
+    </tr>
+</table>
+    <button type="submit" name="action" value="save" class="btn">Register</button>
+</form>
+</center>

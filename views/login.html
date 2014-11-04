@@ -1,0 +1,27 @@
+<center>
+{{#notification}}
+<p class="message {{severity}}">{{message}}</p>
+{{/notification}}
+</center>
+
+<center>
+    <h1>
+        <u>
+        Log In
+        </u>
+    </h1>
+</center>
+
+<center>
+<form action="/login" method="POST">
+<table>
+    <tr>
+        <td>Email: </td> <td><input type="email" name="username" required title="Please enter your user ID." placeholder="john@example.com"></td>
+    </tr>
+    <tr>
+        <td>Password: </td> <td><input type="password" name="password" required title="Please enter your password."></td>
+    </tr>
+</table>
+    <button type="submit" name="action" value="save" class="btn">log in</button>
+</form>
+</center>

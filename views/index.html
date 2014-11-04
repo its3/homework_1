@@ -2,16 +2,24 @@
 <p class="message {{severity}}">{{message}}</p>
 {{/notification}}
 
+<form>
 <nav class="nav-bar">
 
     <center><a href="/contacts/addGroup" class="btn">Add Group</a></center>
 <br>
     <center><a href="/contacts/deleteGroup" class="btn">Delete Group</a></center>
-<ul>
+<br>
+    <center><a href="/" class="btn">Show All</a></center>
+<br>
+<center>
+<u>
     {{#groups}}
-    <li>{{name}}</li>
+    <li><a href="/{{name}}">{{name}}</a></li>
     {{/groups}}
-</ul>
+</u>
+</center>
+<br>
+
 </nav>
 
 <br>
@@ -28,14 +36,15 @@
     <table style= "margin-left: 240px;">
         <tr>
             {{#if currentPage}}
-            <td><a href="/?page={{nextPage}}" class="btn foot">Next Page</a></td>
+            <td><a href="/{{#if group}}{{group}}{{/if}}?page={{nextPage}}" class="btn foot">Next Page</a></td>
             {{/if}}
             {{#numPages}}
-            <td><a href="/?page={{numPages}}" class="btn foot">{{numPages}}</a></td>
+            <td><a href="/{{#if group}}{{group}}{{/if}}?page={{numPages}}" class="btn foot">{{numPages}}</a></td>
             {{/numPages}}
             {{#if previousPage}}
-            <td><a href="/?page={{previousPage}}" class="btn foot">Previous Page</a></td>
+            <td><a href="/{{#if group}}{{group}}{{/if}}?page={{previousPage}}" class="btn foot">Previous Page</a></td>
             {{/if}}
         </tr>
     </table>
 </center>
+</form>
